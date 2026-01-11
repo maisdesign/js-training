@@ -91,4 +91,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     * Fine esercizio 2
     */
 
+   /*
+   * Esercizio 3
+   */
+
+   /*
+   * Fine esercizio 3
+   */
+
 });

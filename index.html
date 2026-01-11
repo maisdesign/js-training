@@ -13,7 +13,7 @@
 <body>
   <main class="container my-5">
     <h1 class="mb-4">JS Training</h1>
-    <section class="esercizi" id=="esercizio1">
+    <section class="esercizi" id="esercizio1">
       <h2>Esercizio 1: Calcolatrice Base</h2>
       <div class="operation-bot my-3 p-3 row">
         <p>Crea una pagina che permetta di inserire due numeri all’utente e, tramite dei pulsanti dedicati, calcolare e
@@ -67,6 +67,30 @@
           <div class="result-zone-text-converter card col-6 mx-auto text-center text-bg-dark">
             <div class="card-body">
               <p class="card-text" id="result-text"> </p>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="esercizi" id="esercizio3">
+      <h2>Esercizio 3: Filtro Numeri Pari e Dispari</h2>
+      <div class="number-array-container my-3 p-3 row">
+        <p>
+          Scrivi una funzione che prenda in ingresso un array di 20 numeri e crei due nuovi array: uno con i numeri
+          pari, uno con i dispari. Mostra entrambi gli array e le loro somme.
+        </p>
+        <div class="number-array-inputs my-3 col-12">
+          <label for="number-array-input" class="col-12 mx-auto">
+            Puoi scegliere, inserisci 20 numeri separati da <code>','</code> oppure lascia che lo script li generi per te.
+            <input type="text" id="number-array-input" class="form-control" placeholder="Puoi scegliere, inserisci 20 numeri separati da ',' oppure lascia che lo script li generi per te."/>
+          </label>
+          <div class="number-array-modifier my-3 row col-6 mx-auto">
+            <button class="number-array-generator btn btn-outline-primary col-6 mx-auto" id="num-array-generate">Attiva la magia</button>
+          </div>
+        </div>
+        <div class="result-number-array my-3 p-3 row">
+          <div class="result-zone-number-array card col-6 mx-auto text-center text-bg-dark">
+            <div class="card-body">
+              <p class="card-text" id="result-number-array"> </p>
             </div>
           </div>
         </div>
