@@ -95,6 +95,30 @@
           </div>
         </div>
     </section>
+    <section class="esercizi" id="esercizio4">
+      <h2>Esercizio 4: Gioco "Indovina il Numero"</h2>
+      <div class="number-guesser-container my-3 p-3 row">
+        <p>
+          Realizza un gioco "Indovina il numero": il computer sceglie un numero tra 1 e 100. L'utente fa tentativi e riceve feedback "troppo alto", "troppo basso" o "corretto!". Conta i tentativi necessari.
+        </p>
+        <div class="number-guesser-inputs my-3 col-12">
+          <label for="number-guesser-input" class="col-12 mx-auto">
+            Indovina il numero! Scrivi un numero compreso tra <code>1 e 100</code> e scopri se hai indovinato!
+            <input type="number" id="number-guesser-input" class="form-control" placeholder="Inserisci un numero tra 1 e 100"/>
+          </label>
+          <div class="number-guesser-modifier my-3 row col-6 mx-auto">
+            <button class="number-guesser-generator btn btn-outline-primary col-6 mx-auto" id="num-guesser-generate">Scopri se hai indovinato</button>
+            <button class="new-number-guesser-generator btn btn-outline-primary col-6 mx-auto" id="new-num-guesser-generate">Nuovo Numero</button>
+          </div>
+        </div>
+        <div class="result-number-guesser my-3 p-3 row">
+          <div class="result-zone-number-guesser card col-6 mx-auto text-center text-bg-dark">
+            <div class="card-body">
+              <p class="card-text" id="result-number-guesser"> </p>
+            </div>
+          </div>
+        </div>
+    </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
