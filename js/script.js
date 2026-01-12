@@ -15,7 +15,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let numberArrayGeneratorButton = document.getElementById('num-array-generate');
     let resultNumberArrayElement = document.getElementById('result-number-array');
     let resultNumberArrayCard = document.querySelector('.result-zone-number-array');
+    /*Esercizio 4*/
+    let contatoreTentativi = 1;
+    let numberGuesserInput = document.getElementById('number-guesser-input');
+    let numberGuesserGenerateButton = document.getElementById('num-guesser-generate');
+    let newNumberGuesserGenerateButton = document.getElementById('new-num-guesser-generate');
+    let resultNumberGuesserElement = document.getElementById('result-number-guesser');
+    let resultNumberGuesserCard = document.querySelector('.result-zone-number-guesser');
+    let numberCpuGenerated = Math.floor(Math.random() * 100) + 1;
 
+    /* Variabili e funzioni usate in più esercizi */
     const colorMap = {
         'sum': 'text-bg-primary',
         'sot': 'text-bg-secondary',
@@ -27,7 +36,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         'reverse': 'text-bg-danger',
     };
 
-    const bootstrapBgClasses = ['text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger'];
+    const bootstrapBgClasses = ['text-bg-primary', 'text-bg-secondary', 'text-bg-success', 'text-bg-danger', 'text-bg-warning', 'text-bg-info', 'text-bg-light', 'text-bg-dark'];
     function setCardColor(elemento, nuovoColore) {
         elemento.classList.remove(...bootstrapBgClasses);
         elemento.classList.add(nuovoColore);
@@ -153,6 +162,49 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     /*
     * Fine esercizio 3
+    */
+
+    /*
+    * Esercizio 4
+    */
+
+    numberGuesserGenerateButton.addEventListener('click', () => {
+        const userNumberGuessed = parseInt(numberGuesserInput.value);
+        if (isNaN(userNumberGuessed) || userNumberGuessed < 1 || userNumberGuessed > 100) {
+            resultNumberGuesserElement.textContent = "Inserisci un numero valido";
+            setCardColor(resultNumberGuesserCard, 'text-bg-danger');
+            return;
+        } else {
+            if (userNumberGuessed === numberCpuGenerated) {
+                resultNumberGuesserElement.textContent = "Hai indovinato! Tentativi: " + contatoreTentativi;
+                setCardColor(resultNumberGuesserCard, 'text-bg-success');
+                return;
+            } else if (userNumberGuessed < numberCpuGenerated) {
+                contatoreTentativi++;
+                resultNumberGuesserElement.innerHTML = "Il numero è troppo basso. </br> Per ora hai effettuato " + contatoreTentativi + " tentativi";
+                setCardColor(resultNumberGuesserCard, 'text-bg-primary');
+                return;
+            } else {
+                contatoreTentativi++;
+                resultNumberGuesserElement.innerHTML = "Il numero è troppo alto. </br> Per ora hai effettuato " + contatoreTentativi + " tentativi";
+                setCardColor(resultNumberGuesserCard, 'text-bg-warning');
+                return;
+            }
+        };
+
+    });
+
+    newNumberGuesserGenerateButton.addEventListener('click', () => {
+        numberCpuGenerated = Math.floor(Math.random() * 100) + 1;
+        contatoreTentativi = 1;
+        numberGuesserInput.value = '';  // pulisce input
+        resultNumberGuesserElement.textContent = '';  // pulisce messaggio
+        setCardColor(resultNumberGuesserCard, 'text-bg-dark');  // resetta colore
+        console.log(numberCpuGenerated);
+    });
+
+    /*
+    * Fine esercizio 4
     */
 
 });
