@@ -26,6 +26,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
         'capitalize': 'text-bg-success',
         'reverse': 'text-bg-danger',
     };
+
+    const bootstrapBgClasses = ['text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger'];
+    function setCardColor(elemento, nuovoColore) {
+        elemento.classList.remove(...bootstrapBgClasses);
+        elemento.classList.add(nuovoColore);
+    }
+
     /* 
     * Esercizio 1 
     */
@@ -45,8 +52,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 }
                 const cardColor = colorMap[event.currentTarget.id];
 
-                resultCard.classList.remove('text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger');
-                resultCard.classList.add(cardColor);
+                setCardColor(resultCard, cardColor);
             }
             resultElement.textContent = result;
         })
@@ -58,7 +64,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     /* 
     * Esercizio 2
     */
-    /*Funzione MAP da richiamare successivamente*/
+
     function capitalizeWords(text) {
         return text
             .split(' ')
@@ -69,7 +75,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             })
             .join(' ');
     }
-    /* Fine funzione MAP*/
+
     textModifierButtons.forEach((button) => {
         button.addEventListener('click', (event) => {
             const textToModify = userSentenceInput.value.trim();
@@ -85,8 +91,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 }
                 const cardColor = colorMap[event.currentTarget.id];
 
-                resultTextCard.classList.remove('text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger');
-                resultTextCard.classList.add(cardColor);
+                setCardColor(resultTextCard, cardColor);
             }
             modifiedSentenceElement.textContent = result;
         })
@@ -109,7 +114,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         let sommaDispari = 0;
 
         function resultNumPrinter() {
-            setCardSuccess();
+            setCardColor(resultNumberArrayCard, 'text-bg-success');
             numeriPari = numeriCasuali.filter(numero => numero % 2 === 0);
             numeriDispari = numeriCasuali.filter(numero => numero % 2 !== 0);
             sommaTotale = numeriCasuali.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -117,15 +122,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             sommaDispari = numeriDispari.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             resultNumberArrayElement.innerHTML = "Questo è l'array: " + numeriCasuali + "<br> La somma è: " + sommaTotale + "<br> Questi sono i numeri pari: " + numeriPari + "<br> Questi sono i numeri dispari: " + numeriDispari + "<br> Somma numeri pari: " + sommaPari + "<br> Somma numeri dispari: " + sommaDispari;
         };
-
-        function setCardError() {
-            resultNumberArrayCard.classList.remove('text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger');
-            resultNumberArrayCard.classList.add('text-bg-danger');
-        }
-        function setCardSuccess() {
-            resultNumberArrayCard.classList.remove('text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger');
-            resultNumberArrayCard.classList.add('text-bg-success');
-        }
 
         if (userInput != '') {
             let numeriDiControllo = userInput.split(',').map(num => parseInt(num.trim(), 10));
@@ -137,13 +133,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 } else {
                     resultNumberArrayElement.innerHTML = "Inserisci esattamente 20 numeri separati da virgola <code>','</code>";
 
-                    setCardError();
+                    setCardColor(resultNumberArrayCard, 'text-bg-danger');
                     return;
                 }
             } else {
                 resultNumberArrayElement.innerHTML = "Inserisci solo numeri validi separati da virgola <code>','</code>";
 
-                setCardError();
+                setCardColor(resultNumberArrayCard, 'text-bg-danger');
                 return;
             }
         } else {
