@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             sommaTotale = numeriCasuali.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             sommaPari = numeriPari.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             sommaDispari = numeriDispari.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-            resultNumberArrayElement.innerHTML = "Questo è l'array: " + numeriCasuali + "<br> e la somma è: " + sommaTotale + "<br> questi sono i numeri pari: " + numeriPari + "<br> questi sono i numeri dispari: " + numeriDispari + "<br> somma numeri pari: " + sommaPari + "<br> somma numeri dispari: " + sommaDispari;
+            resultNumberArrayElement.innerHTML = "Questo è l'array: " + numeriCasuali + "<br> La somma è: " + sommaTotale + "<br> Questi sono i numeri pari: " + numeriPari + "<br> Questi sono i numeri dispari: " + numeriDispari + "<br> Somma numeri pari: " + sommaPari + "<br> Somma numeri dispari: " + sommaDispari;
         };
 
         function setCardError() {
