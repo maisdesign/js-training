@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let userSentenceInput = document.getElementById('sentence');
     let modifiedSentenceElement = document.getElementById('result-text');
     let resultTextCard = document.querySelector('.result-zone-text-converter');
+    /*Esercizio 3*/
+    let numArrayInput = document.getElementById('number-array-input');
+    let numberArrayGeneratorButton = document.getElementById('num-array-generate');
+    let resultNumberArrayElement = document.getElementById('result-number-array');
+    let resultNumberArrayCard = document.querySelector('.result-zone-number-array');
 
     const colorMap = {
         'sum': 'text-bg-primary',
@@ -91,12 +96,67 @@ document.addEventListener("DOMContentLoaded", (event) => {
     * Fine esercizio 2
     */
 
-   /*
-   * Esercizio 3
-   */
+    /*
+    * Esercizio 3
+    */
+    numberArrayGeneratorButton.addEventListener('click', () => {
+        const userInput = numArrayInput.value.trim();
+        let sommaTotale = 0;
+        let numeriCasuali = [];
+        let numeriPari = [];
+        let numeriDispari = [];
+        let sommaPari = 0;
+        let sommaDispari = 0;
 
-   /*
-   * Fine esercizio 3
-   */
+        function resultNumPrinter() {
+            setCardSuccess();
+            numeriPari = numeriCasuali.filter(numero => numero % 2 === 0);
+            numeriDispari = numeriCasuali.filter(numero => numero % 2 !== 0);
+            sommaTotale = numeriCasuali.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+            sommaPari = numeriPari.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+            sommaDispari = numeriDispari.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+            resultNumberArrayElement.innerHTML = "Questo è l'array: " + numeriCasuali + "<br> e la somma è: " + sommaTotale + "<br> questi sono i numeri pari: " + numeriPari + "<br> questi sono i numeri dispari: " + numeriDispari + "<br> somma numeri pari: " + sommaPari + "<br> somma numeri dispari: " + sommaDispari;
+        };
+
+        function setCardError() {
+            resultNumberArrayCard.classList.remove('text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger');
+            resultNumberArrayCard.classList.add('text-bg-danger');
+        }
+        function setCardSuccess() {
+            resultNumberArrayCard.classList.remove('text-bg-dark', 'text-bg-success', 'text-bg-primary', 'text-bg-secondary', 'text-bg-danger');
+            resultNumberArrayCard.classList.add('text-bg-success');
+        }
+
+        if (userInput != '') {
+            let numeriDiControllo = userInput.split(',').map(num => parseInt(num.trim(), 10));
+            if (numeriDiControllo.every(numero => !isNaN(numero))) {
+                if (numeriDiControllo.length === 20) {
+                    numeriCasuali = numeriDiControllo;
+                    resultNumPrinter();
+
+                } else {
+                    resultNumberArrayElement.innerHTML = "Inserisci esattamente 20 numeri separati da virgola <code>','</code>";
+
+                    setCardError();
+                    return;
+                }
+            } else {
+                resultNumberArrayElement.innerHTML = "Inserisci solo numeri validi separati da virgola <code>','</code>";
+
+                setCardError();
+                return;
+            }
+        } else {
+            numeriCasuali = Array.from({ length: 20 }, () => Math.floor(Math.random() * 100) + 1);
+            resultNumPrinter();
+
+        }
+
+
+    });
+
+    /*
+    * Fine esercizio 3
+    */
 
 });
