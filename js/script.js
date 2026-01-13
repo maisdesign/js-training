@@ -34,6 +34,35 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let timerCard = document.querySelector('.result-zone-timer-pomodoro');
     let inPausa = false;
     let inRiposo = false;
+    /* Esercizio 6 */
+    const quoteArrayOriginal = [
+        "Una nuova vita vi attende nella colonia Extra-Mondo. L'occasione per ricominciare in un Eldorado di buone occasioni e di avventure. (Voce del dirigibile)", "Non cercano killer nelle inserzioni sui giornali. Quella era la mia professione. Ex-poliziotto. Ex-cacciatore di replicanti. Ex-killer. (Rick Deckard)",
+        "[Voce fuori campo] Il mio nome è Rick Deckard. Sono un Blade Runner. Un cacciatore di taglie specializzato nel ritirare replicanti fuggitivi. (Rick Deckard)", "[Voce fuori campo] Sushi. Così mi chiamava la mia ex-moglie. Pesce freddo. (Rick Deckard)",
+        "[Voce fuori campo] Sushi. Così mi chiamava la mia ex-moglie. Pesce freddo. (Rick Deckard)",
+        "[Voce fuori campo] Questo simpaticone si chiama Gaff. Bryant doveva averlo sollevato al rango dell'unità Blade Runner. I suoni inarticolati che emetteva erano la parlata cittadina, un guazzabuglio di giapponese, spagnolo, tedesco e chi più ne ha... A me non serviva un traduttore. Conoscevo quel gergo come ogni buon poliziotto. Ma non intendevo agevolare Gaff. (Rick Deckard)",
+        "[Voce fuori campo] Lavori in pelle. Così Bryant chiamava i replicanti. Nei libri di storia è il tipo di poliziotto che chiama la gente di colore 'sporchi negri'. (Rick Deckard)",
+        "[Voce fuori campo] Me ne ero andato perché avevo la nausea di uccidere. Ma ora preferivo essere un killer piuttosto che una vittima. Ed era precisamente questo che intendeva Bryant parlando di gente senza peso. Così accettai con la riserva mentale che se non avessi retto, me ne sarei svignata. Non avevo che preoccuparmi di Gaff. Andava leccando piedi a destra e a sinistra per una promozione, e non ci teneva che restassi. (Rick Deckard)",
+        "[Voce fuori campo] Non sapevo se Leon aveva dato a Holden un indirizzo esistente, ma era l'unica traccia che avevo, perciò controllai. Qualunque cosa fosse quello che trovai in quella vasca non era umano. E i replicanti non hanno scaglie. Foto di famiglia... I replicanti non avevano certo famiglia. (Rick Deckard)",
+        "Avvampando gli angeli caddero; profondo il tuono riempì le loro rive, bruciando con i roghi dell'orco. (Roy Batty)",
+        "Fiery the angels fell, deep thunder rolled around their shores; burning with the fires of Orc. (Roy Batty)",
+        "[Voce fuori campo] Tyrell aveva fatto un gran lavoro con Rachael.Perfino un'istantanea di una madre che non aveva mai avuto e di una figlia che non lo era mai stata. Non era previsto che i replicanti avessero sentimenti. Neanche i cacciatori di replicanti. Che diavolo mi stava succedendo? Le foto di Leon dovevano essere artefatte come quelle di Rachael. Non capivo perché un replicante collezionasse foto. Forse loro erano come Rachael: aveva bisogno di ricordi. (Rick Deckard)",
+        "Io faccio amici.Giocattoli.I miei amici sono giocattoli.Li faccio io.È un hobby.Io sono un progettista genetico. (J.F.Sebastian)",
+        "[Rivolto a Rachael] Sono stato scaricato da tante altre persone, ma non quando...Ero stato così amabile!(Rick Deckard)",
+        "Signori e signore, Taffy Lewis presenta Miss Salomé e il serpente.Guardatela prendersi piacere dal serpente che un tempo corruppe l'uomo. (Annunciatore)",
+        "Il rapporto: ordinaria amministrazione, ritiro[1] di un replicante.Ma non bastava comunque a confortarmi dall'aver sparato nella schiena a una donna. Ed ecco di nuovo un sentimento dentro di me. Per lei, per Rachael. (Rick Deckard)",
+        "Io penso, Sebastian, pertanto sono. (Pris)",
+        "[Rivolto a Deckard]Non è molto sportivo sparare su un avversario disarmato.Io pensavo che tu dovessi essere bravo.Non eri tu quello bravo ? [10] Vieni Deckard.Fammi vedere di cosa sei fatto. (Roy Batty)",
+        "[Rivolto a Deckard]Bella esperienza vivere nel terrore, vero ? In questo consiste essere uno schiavo. (Roy Batty)",
+        "[Ultime parole a Deckard]Io ne ho viste cose che voi umani non potreste immaginarvi.[11] Navi da combattimento in fiamme al largo dei bastioni di Orione...e ho visto i raggi B[12] balenare nel buio vicino alle porte di Tannhäuser.[13] E tutti quei momenti andranno perduti nel tempo come lacrime nella pioggia.È tempo di morire. (Roy Batty)",
+        "I've seen things you people wouldn't believe.Attack ships on fire off the shoulder of Orion.I watched C - beams glitter in the dark near the Tannhauser gate.All those moments will be lost in time, like tears in rain.Time to die.",
+        "[Voce fuori campo, parlando di Roy]Io non so perché mi salvò la vita.Forse in quegli ultimi momenti amava la vita più di quanto l'avesse mai amata... Non solo la sua vita: la vita di chiunque, la mia vita. Tutto ciò che volevano erano le stesse risposte che noi tutti vogliamo: 'Da dove vengo?' 'Dove vado?' 'Quanto mi resta ancora?' Non ho potuto far altro che restare lì e guardarlo morire. (Rick Deckard)"];
+
+    const quoteButton = document.getElementById('quote-generator-start');
+    const quoteDisplay = document.getElementById('quote-generator-display');
+    const quoteCard = document.querySelector('.result-zone-quote');
+    const quoteArray = [...quoteArrayOriginal];
+    const cardColorArray = bootstrapBgClasses.length;
+    let quoteLength = quoteArray.length;
 
     /* Variabili e funzioni usate in più esercizi */
     const colorMap = {
@@ -279,34 +308,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     /*
     * Esercizio 6
     */
-    const quoteArrayOriginal = [
-        "Una nuova vita vi attende nella colonia Extra-Mondo. L'occasione per ricominciare in un Eldorado di buone occasioni e di avventure. (Voce del dirigibile)", "Non cercano killer nelle inserzioni sui giornali. Quella era la mia professione. Ex-poliziotto. Ex-cacciatore di replicanti. Ex-killer. (Rick Deckard)",
-        "[Voce fuori campo] Il mio nome è Rick Deckard. Sono un Blade Runner. Un cacciatore di taglie specializzato nel ritirare replicanti fuggitivi. (Rick Deckard)", "[Voce fuori campo] Sushi. Così mi chiamava la mia ex-moglie. Pesce freddo. (Rick Deckard)",
-        "[Voce fuori campo] Sushi. Così mi chiamava la mia ex-moglie. Pesce freddo. (Rick Deckard)",
-        "[Voce fuori campo] Questo simpaticone si chiama Gaff. Bryant doveva averlo sollevato al rango dell'unità Blade Runner. I suoni inarticolati che emetteva erano la parlata cittadina, un guazzabuglio di giapponese, spagnolo, tedesco e chi più ne ha... A me non serviva un traduttore. Conoscevo quel gergo come ogni buon poliziotto. Ma non intendevo agevolare Gaff. (Rick Deckard)",
-        "[Voce fuori campo] Lavori in pelle. Così Bryant chiamava i replicanti. Nei libri di storia è il tipo di poliziotto che chiama la gente di colore 'sporchi negri'. (Rick Deckard)",
-        "[Voce fuori campo] Me ne ero andato perché avevo la nausea di uccidere. Ma ora preferivo essere un killer piuttosto che una vittima. Ed era precisamente questo che intendeva Bryant parlando di gente senza peso. Così accettai con la riserva mentale che se non avessi retto, me ne sarei svignata. Non avevo che preoccuparmi di Gaff. Andava leccando piedi a destra e a sinistra per una promozione, e non ci teneva che restassi. (Rick Deckard)",
-        "[Voce fuori campo] Non sapevo se Leon aveva dato a Holden un indirizzo esistente, ma era l'unica traccia che avevo, perciò controllai. Qualunque cosa fosse quello che trovai in quella vasca non era umano. E i replicanti non hanno scaglie. Foto di famiglia... I replicanti non avevano certo famiglia. (Rick Deckard)",
-        "Avvampando gli angeli caddero; profondo il tuono riempì le loro rive, bruciando con i roghi dell'orco. (Roy Batty)",
-        "Fiery the angels fell, deep thunder rolled around their shores; burning with the fires of Orc. (Roy Batty)",
-        "[Voce fuori campo] Tyrell aveva fatto un gran lavoro con Rachael.Perfino un'istantanea di una madre che non aveva mai avuto e di una figlia che non lo era mai stata. Non era previsto che i replicanti avessero sentimenti. Neanche i cacciatori di replicanti. Che diavolo mi stava succedendo? Le foto di Leon dovevano essere artefatte come quelle di Rachael. Non capivo perché un replicante collezionasse foto. Forse loro erano come Rachael: aveva bisogno di ricordi. (Rick Deckard)",
-        "Io faccio amici.Giocattoli.I miei amici sono giocattoli.Li faccio io.È un hobby.Io sono un progettista genetico. (J.F.Sebastian)",
-        "[Rivolto a Rachael] Sono stato scaricato da tante altre persone, ma non quando...Ero stato così amabile!(Rick Deckard)",
-        "Signori e signore, Taffy Lewis presenta Miss Salomé e il serpente.Guardatela prendersi piacere dal serpente che un tempo corruppe l'uomo. (Annunciatore)",
-        "Il rapporto: ordinaria amministrazione, ritiro[1] di un replicante.Ma non bastava comunque a confortarmi dall'aver sparato nella schiena a una donna. Ed ecco di nuovo un sentimento dentro di me. Per lei, per Rachael. (Rick Deckard)",
-        "Io penso, Sebastian, pertanto sono. (Pris)",
-        "[Rivolto a Deckard]Non è molto sportivo sparare su un avversario disarmato.Io pensavo che tu dovessi essere bravo.Non eri tu quello bravo ? [10] Vieni Deckard.Fammi vedere di cosa sei fatto. (Roy Batty)",
-        "[Rivolto a Deckard]Bella esperienza vivere nel terrore, vero ? In questo consiste essere uno schiavo. (Roy Batty)",
-        "[Ultime parole a Deckard]Io ne ho viste cose che voi umani non potreste immaginarvi.[11] Navi da combattimento in fiamme al largo dei bastioni di Orione...e ho visto i raggi B[12] balenare nel buio vicino alle porte di Tannhäuser.[13] E tutti quei momenti andranno perduti nel tempo come lacrime nella pioggia.È tempo di morire. (Roy Batty)",
-        "I've seen things you people wouldn't believe.Attack ships on fire off the shoulder of Orion.I watched C - beams glitter in the dark near the Tannhauser gate.All those moments will be lost in time, like tears in rain.Time to die.",
-        "[Voce fuori campo, parlando di Roy]Io non so perché mi salvò la vita.Forse in quegli ultimi momenti amava la vita più di quanto l'avesse mai amata... Non solo la sua vita: la vita di chiunque, la mia vita. Tutto ciò che volevano erano le stesse risposte che noi tutti vogliamo: 'Da dove vengo?' 'Dove vado?' 'Quanto mi resta ancora?' Non ho potuto far altro che restare lì e guardarlo morire. (Rick Deckard)"];
-
-    const quoteButton = document.getElementById('quote-generator-start');
-    const quoteDisplay = document.getElementById('quote-generator-display');
-    const quoteCard = document.querySelector('.result-zone-quote');
-    const quoteArray = [...quoteArrayOriginal];
-    const cardColorArray = bootstrapBgClasses.length;
-    let quoteLength = quoteArray.length;
     quoteButton.addEventListener('click', () => {
         quoteLength = quoteArray.length;
         if (quoteLength === 0) {
