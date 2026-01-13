@@ -80,11 +80,14 @@
         </p>
         <div class="number-array-inputs my-3 col-12">
           <label for="number-array-input" class="col-12 mx-auto">
-            Puoi scegliere, inserisci 20 numeri separati da <code>','</code> oppure lascia che lo script li generi per te.
-            <input type="text" id="number-array-input" class="form-control" placeholder="Puoi scegliere, inserisci 20 numeri separati da ',' oppure lascia che lo script li generi per te."/>
+            Puoi scegliere, inserisci 20 numeri separati da <code>','</code> oppure lascia che lo script li generi per
+            te.
+            <input type="text" id="number-array-input" class="form-control"
+              placeholder="Puoi scegliere, inserisci 20 numeri separati da ',' oppure lascia che lo script li generi per te." />
           </label>
           <div class="number-array-modifier my-3 row col-6 mx-auto">
-            <button class="number-array-generator btn btn-outline-primary col-6 mx-auto" id="num-array-generate">Attiva la magia</button>
+            <button class="number-array-generator btn btn-outline-primary col-6 mx-auto" id="num-array-generate">Attiva
+              la magia</button>
           </div>
         </div>
         <div class="result-number-array my-3 p-3 row">
@@ -99,16 +102,20 @@
       <h2>Esercizio 4: Gioco "Indovina il Numero"</h2>
       <div class="number-guesser-container my-3 p-3 row">
         <p>
-          Realizza un gioco "Indovina il numero": il computer sceglie un numero tra 1 e 100. L'utente fa tentativi e riceve feedback "troppo alto", "troppo basso" o "corretto!". Conta i tentativi necessari.
+          Realizza un gioco "Indovina il numero": il computer sceglie un numero tra 1 e 100. L'utente fa tentativi e
+          riceve feedback "troppo alto", "troppo basso" o "corretto!". Conta i tentativi necessari.
         </p>
         <div class="number-guesser-inputs my-3 col-12">
           <label for="number-guesser-input" class="col-12 mx-auto">
             Indovina il numero! Scrivi un numero compreso tra <code>1 e 100</code> e scopri se hai indovinato!
-            <input type="number" id="number-guesser-input" class="form-control" placeholder="Inserisci un numero tra 1 e 100"/>
+            <input type="number" id="number-guesser-input" class="form-control"
+              placeholder="Inserisci un numero tra 1 e 100" />
           </label>
           <div class="number-guesser-modifier my-3 row col-6 mx-auto">
-            <button class="number-guesser-generator btn btn-outline-primary col-6 mx-auto" id="num-guesser-generate">Scopri se hai indovinato</button>
-            <button class="new-number-guesser-generator btn btn-outline-primary col-6 mx-auto" id="new-num-guesser-generate">Nuovo Numero</button>
+            <button class="number-guesser-generator btn btn-outline-primary col-6 mx-auto"
+              id="num-guesser-generate">Scopri se hai indovinato</button>
+            <button class="new-number-guesser-generator btn btn-outline-primary col-6 mx-auto"
+              id="new-num-guesser-generate">Nuovo Numero</button>
           </div>
         </div>
         <div class="result-number-guesser my-3 p-3 row">
@@ -127,15 +134,38 @@
         </p>
         <div class="timer-pomodoro-inputs my-3 col-12">
           <div class="tomato-timer-buttons my-3 row col-6 mx-auto">
-            <button class="tomato-timer-start btn btn-outline-primary col-4 mx-auto" id="timer-pomodoro-start">Start</button>
-            <button class="tomato-timer-pause btn btn-outline-primary col-4 mx-auto" id="timer-pomodoro-pause">Pause</button>
-            <button class="tomato-timer-reset btn btn-outline-primary col-4 mx-auto" id="timer-pomodoro-reset">Reset</button>
+            <button class="tomato-timer-start btn btn-outline-primary col-4 mx-auto"
+              id="timer-pomodoro-start">Start</button>
+            <button class="tomato-timer-pause btn btn-outline-primary col-4 mx-auto"
+              id="timer-pomodoro-pause">Pause</button>
+            <button class="tomato-timer-reset btn btn-outline-primary col-4 mx-auto"
+              id="timer-pomodoro-reset">Reset</button>
           </div>
         </div>
         <div class="result-timer-pomodoro my-3 p-3 row">
           <div class="result-zone-timer-pomodoro card col-6 mx-auto text-center text-bg-dark">
             <div class="card-body">
-              <p class="card-text" id="result-timer-pomodoro"> </p>
+              <p class="card-text" id="timer-pomodoro-display"> </p>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="esercizi" id="esercizio6">
+      <h2>Esercizio 6: Generatore di Citazioni Casuali</h2>
+      <div class="timer-pomodoro-container my-3 p-3 row">
+        <p>
+          Crea un generatore di citazioni casuali. Bottoni per generare una nuova citazione.
+        </p>
+        <div class="quote-generator-inputs my-3 col-12">
+          <div class="quote-generator-buttons my-3 row col-6 mx-auto">
+            <button class="quote-generator-start btn btn-outline-primary col-4 mx-auto" id="quote-generator-start">Io
+              Tarzan, tu CITA!</button>
+          </div>
+        </div>
+        <div class="result-quote my-3 p-3 row">
+          <div class="result-zone-quote card col-6 mx-auto text-center text-bg-dark">
+            <div class="card-body">
+              <p class="card-text" id="quote-generator-display"> </p>
             </div>
           </div>
         </div>

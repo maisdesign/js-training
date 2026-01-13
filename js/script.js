@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    /*Esercizio 1 */
+    /* Esercizio 1 */
     let firstNumberInput = document.getElementById('firstNumber');
     let secondNumberInput = document.getElementById('secondNumber');
     let operators = document.querySelectorAll('.operator');
@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let userSentenceInput = document.getElementById('sentence');
     let modifiedSentenceElement = document.getElementById('result-text');
     let resultTextCard = document.querySelector('.result-zone-text-converter');
-    /*Esercizio 3*/
+    /* Esercizio 3 */
     let numArrayInput = document.getElementById('number-array-input');
     let numberArrayGeneratorButton = document.getElementById('num-array-generate');
     let resultNumberArrayElement = document.getElementById('result-number-array');
     let resultNumberArrayCard = document.querySelector('.result-zone-number-array');
-    /*Esercizio 4*/
+    /* Esercizio 4 */
     let contatoreTentativi = 1;
     let numberGuesserInput = document.getElementById('number-guesser-input');
     let numberGuesserGenerateButton = document.getElementById('num-guesser-generate');
@@ -23,6 +23,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let resultNumberGuesserElement = document.getElementById('result-number-guesser');
     let resultNumberGuesserCard = document.querySelector('.result-zone-number-guesser');
     let numberCpuGenerated = Math.floor(Math.random() * 100) + 1;
+    /* Esercizio 5 */
+    let timerTotale = 1800000; //in millisecondi - 1800000 = 30 minuti
+    let tempoRestante = 0;
+    let timerInterval;
+    let startTimerButton = document.getElementById('timer-pomodoro-start');
+    let pauseTimerButton = document.getElementById('timer-pomodoro-pause');
+    let resetTimerButton = document.getElementById('timer-pomodoro-reset');
+    let timerDisplay = document.getElementById('timer-pomodoro-display');
+    let timerCard = document.querySelector('.result-zone-timer-pomodoro');
+    let inPausa = false;
+    let inRiposo = false;
 
     /* Variabili e funzioni usate in più esercizi */
     const colorMap = {
@@ -207,4 +218,69 @@ document.addEventListener("DOMContentLoaded", (event) => {
     * Fine esercizio 4
     */
 
-});
+    /*
+    * Esercizio 5
+    */
+
+    function updateTimerDisplay() {
+        const minuti = Math.floor(tempoRestante / 60000);
+        const secondi = Math.floor((tempoRestante % 60000) / 1000);
+        timerDisplay.textContent = `${minuti.toString().padStart(2, '0')}:${secondi.toString().padStart(2, '0')}`;
+    }
+    startTimerButton.addEventListener('click', () => {
+        inPausa = false;
+        if (tempoRestante === 0) {
+            tempoRestante = timerTotale;
+        }
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            if (tempoRestante <= 0) {
+                clearInterval(timerInterval);
+                timerDisplay.innerHTML = "00:00 <br> Tempo scaduto!";
+                setCardColor(timerCard, 'text-bg-danger');
+            } else if (tempoRestante <= 300000) { // in millisecondi - 300000 = 5 minuti
+                if (inRiposo === false) {
+                    setCardColor(timerCard, 'text-bg-success');
+                    timerDisplay.innerHTML = timerDisplay.textContent + "<br> Prenditi una pausa!";
+                    inRiposo = true;
+                }
+                tempoRestante -= 1000;
+                updateTimerDisplay();
+
+            } else {
+                tempoRestante -= 1000;
+                updateTimerDisplay();
+            }
+        }, 1000);
+    });
+
+    pauseTimerButton.addEventListener('click', () => {
+        clearInterval(timerInterval);
+        if (inPausa === false) {
+            setCardColor(timerCard, 'text-bg-warning');
+            inPausa = true;
+        }
+    });
+    resetTimerButton.addEventListener('click', () => {
+        clearInterval(timerInterval);
+        tempoRestante = timerTotale;
+        updateTimerDisplay();
+        setCardColor(timerCard, 'text-bg-dark');
+        inPausa = false;
+        inRiposo = false;
+    });
+
+    updateTimerDisplay();
+
+    /*
+    * Fine esercizio 5
+    */
+
+    /*
+    * Esercizio 6
+    */
+    /*
+    * Fine esercizio 6
+    */
+
+});//DomContentLoaded
